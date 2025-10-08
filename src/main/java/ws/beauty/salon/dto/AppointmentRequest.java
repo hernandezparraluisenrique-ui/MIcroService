@@ -14,9 +14,9 @@ public class AppointmentRequest {
     @Size(max = 20)
     private String status = "pending";
     @NotNull
-    private Long idClient;
+    private Integer idClient;
 
-    private Long idStylist;
+    private Integer idStylist;
 
-    private Long idService;
+    private Integer idService;
 }

@@ -16,7 +16,8 @@ import ws.beauty.salon.service.AppointmentNoteService;
 
 @RestController
 @RequestMapping("appointment-notes")
-@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE })
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
+        RequestMethod.DELETE })
 @Tag(name = "AppointmentNotes", description = "Provides methods for managing appointment notes")
 public class AppointmentNoteController {
 
@@ -37,13 +38,7 @@ public class AppointmentNoteController {
     public ResponseEntity<AppointmentNote> getById(@PathVariable Integer idNote) {
         Optional<AppointmentNote> note = service.getById(idNote);
         return note.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
-                   .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-    }
-
-    // Obtener notas por cita
-    @GetMapping("/appointment/{appointmentId}")
-    public List<AppointmentNote> getByAppointment(@PathVariable Integer appointmentId) {
-        return service.getByAppointment(appointmentId);
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     // Crear o actualizar nota

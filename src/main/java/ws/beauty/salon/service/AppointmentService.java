@@ -8,11 +8,11 @@ import ws.beauty.salon.dto.AppointmentResponse;
 public interface AppointmentService {
     List<AppointmentResponse> findAll();
 
-    AppointmentResponse findById(Long idAppointment);
+    AppointmentResponse findById(Integer idAppointment);
 
     AppointmentResponse create(AppointmentRequest req);
 
-    AppointmentResponse update(Long idAppointment, AppointmentRequest req);
+    AppointmentResponse update(Integer idAppointment, AppointmentRequest req);
 
-    void delete(Long idAppointment);
+    void delete(Integer idAppointment);
 }

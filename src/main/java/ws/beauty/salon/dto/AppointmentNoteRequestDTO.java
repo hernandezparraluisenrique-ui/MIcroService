@@ -6,12 +6,12 @@ import lombok.Data;
 
 @Data
 public class AppointmentNoteRequestDTO {
-    @JsonProperty("id note")
-    private Integer id;
+    @JsonProperty("idNote")
+    private Integer idNote;
 
-    @JsonProperty("id appointment ")
+    @JsonProperty("appointmentId")
     private Integer appointmentId;
 
-    @JsonProperty("note text")
+    @JsonProperty("noteText")
     private String noteText;
 }

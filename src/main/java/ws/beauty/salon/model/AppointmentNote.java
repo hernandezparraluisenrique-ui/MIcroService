@@ -1,4 +1,6 @@
 package ws.beauty.salon.model;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -17,10 +19,11 @@ public class AppointmentNote {
     private Integer id;
 
     // Relación con Appointment
-    /*@ManyToOne
-    @JoinColumn(name = "appointment", referencedColumnName = "idAppointment", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "idAppointment", referencedColumnName = "idAppointment", nullable = false)
     @JsonProperty("appointment")
-    private Appointment appointment;*/
+    @JsonBackReference
+    private Appointment appointment;
 
     @Column(name = "noteText", columnDefinition = "TEXT")
     @JsonProperty("noteText")

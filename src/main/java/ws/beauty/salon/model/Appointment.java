@@ -23,7 +23,7 @@ public class Appointment {
      @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_appointment")
-    private Long idAppointment;
+    private Integer idAppointment;
 
     @Column(name = "appointment_datetime", nullable = false)
     private LocalDateTime appointmentDatetime;
@@ -32,13 +32,13 @@ public class Appointment {
     private String status = "pending";
 
     @Column(name = "id_client", nullable = false)
-    private Long idClient;
+    private Integer idClient;
 
     @Column(name = "id_stylist")
-    private Long idStylist;
+    private Integer idStylist;
 
     @Column(name = "id_service")
-    private Long idService;
+    private Integer idService;
 
     @PrePersist
     void ensureDefaultStatus() {

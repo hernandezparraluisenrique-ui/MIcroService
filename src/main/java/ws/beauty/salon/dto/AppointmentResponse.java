@@ -8,10 +8,10 @@ import lombok.Value;
 @Value
 @Builder
 public class AppointmentResponse {
-    Long idAppointment;
+    Integer idAppointment;
     LocalDateTime appointmentDatetime;
     String status;
-    Long idClient;
-    Long idStylist;
-    Long idService;
+    Integer idClient;
+    Integer idStylist;
+    Integer idService;
 }

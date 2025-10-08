@@ -27,7 +27,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public AppointmentResponse findById(Long idAppointment) {
+    public AppointmentResponse findById(Integer idAppointment) {
         Appointment appointment = repository.findById(idAppointment)
                 .orElseThrow(() -> new EntityNotFoundException("Appointment not found: " + idAppointment));
         return AppointmentMapper.toResponse(appointment);
@@ -40,7 +40,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public AppointmentResponse update(Long idAppointment, AppointmentRequest dto) {
+    public AppointmentResponse update(Integer idAppointment, AppointmentRequest dto) {
         Appointment existing = repository.findById(idAppointment)
                 .orElseThrow(() -> new EntityNotFoundException("Appointment not found: " + idAppointment));
         AppointmentMapper.copyToEntity(dto, existing);
@@ -49,7 +49,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public void delete(Long idAppointment) {
+    public void delete(Integer idAppointment) {
         if (!repository.existsById(idAppointment)) {
             throw new EntityNotFoundException("Appointment not found: " + idAppointment);
         }

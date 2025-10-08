@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
 import ws.beauty.salon.model.AppointmentNote;
-//import ws.beauty.salon.model.Appointment;
+import ws.beauty.salon.model.Appointment;
 import ws.beauty.salon.repository.AppointmentNoteRepository;
-//import ws.beauty.salon.repository.AppointmentRepository;
+import ws.beauty.salon.repository.AppointmentRepository;
 
 @Service
 @Transactional
@@ -20,7 +20,7 @@ public class AppointmentNoteService {
     private AppointmentNoteRepository repository;
 
     @Autowired
-    //private AppointmentRepository appointmentRepository;
+    private AppointmentRepository appointmentRepository;
 
     // Obtener todas las notas
     public List<AppointmentNote> getAll() {
@@ -42,14 +42,12 @@ public class AppointmentNoteService {
         repository.deleteById(idNote);
     }
 
-    
-
     // Asignar Appointment a la nota antes de guardar
-    /*public AppointmentNote assignAppointment(AppointmentNote note, Integer appointmentId) {
+    public AppointmentNote assignAppointment(AppointmentNote note, Integer appointmentId) {
         Appointment appointment = appointmentRepository.findById(appointmentId)
                 .orElseThrow(() -> new RuntimeException("Appointment not found"));
         note.setAppointment(appointment);
         return note;
-    }*/
+    }
 }
 
