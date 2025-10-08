@@ -9,12 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.ArraySchema;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import ws.beauty.salon.dto.AppointmentNoteRequestDTO;
 import ws.beauty.salon.model.AppointmentNote;
@@ -53,20 +47,20 @@ public class AppointmentNoteController {
     }
 
     // Crear o actualizar nota
-    /*@PostMapping
+    @PostMapping
     public ResponseEntity<AppointmentNoteRequestDTO> add(@RequestBody AppointmentNoteRequestDTO noteDTO) {
         AppointmentNote note = convertToEntity(noteDTO);
         note = service.assignAppointment(note, noteDTO.getAppointmentId());
         AppointmentNote savedNote = service.save(note);
         return new ResponseEntity<>(convertToDTO(savedNote), HttpStatus.CREATED);
-    }*/
+    }
 
     // Eliminar nota
-    /*@DeleteMapping("{idNote}")
+    @DeleteMapping("{idNote}")
     public ResponseEntity<Void> delete(@PathVariable Integer idNote) {
         service.delete(idNote);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }*/
+    }
 
     // Conversiones DTO <-> Entity
     private AppointmentNoteRequestDTO convertToDTO(AppointmentNote note) {

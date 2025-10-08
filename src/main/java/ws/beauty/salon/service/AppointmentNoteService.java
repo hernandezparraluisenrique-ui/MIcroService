@@ -19,7 +19,7 @@ public class AppointmentNoteService {
     @Autowired
     private AppointmentNoteRepository repository;
 
-    //@Autowired
+    @Autowired
     //private AppointmentRepository appointmentRepository;
 
     // Obtener todas las notas
@@ -38,14 +38,11 @@ public class AppointmentNoteService {
     }
 
     // Eliminar nota
-    /*public void delete(Integer idNote) {
+    public void delete(Integer idNote) {
         repository.deleteById(idNote);
-    }*/
-
-    // Obtener notas por cita
-    public List<AppointmentNote> getByAppointment(Integer appointmentId) {
-        return repository.findByAppointmentId(appointmentId);
     }
+
+    
 
     // Asignar Appointment a la nota antes de guardar
     /*public AppointmentNote assignAppointment(AppointmentNote note, Integer appointmentId) {
@@ -55,3 +52,4 @@ public class AppointmentNoteService {
         return note;
     }*/
 }
+
