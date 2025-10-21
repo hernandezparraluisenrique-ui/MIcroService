@@ -91,6 +91,7 @@
             <version>2.5.0</version>
         </dependency>
 
+        <!-- Nuevas dependencias que faltaban 
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -100,7 +101,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
-        </dependency>
+        </dependency>-->
     </dependencies>
 
     <build>

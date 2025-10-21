@@ -3,13 +3,13 @@ package ws.beauty.salon.mapper;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import ws.beauty.salon.dto.PaymentRequest;
 import ws.beauty.salon.dto.PaymentResponse;
 import ws.beauty.salon.model.Appointment;
 import ws.beauty.salon.model.Payment;
-import ws.beauty.salon.dto.PaymentRequest;
 
 public class PaymentMapper {
-   // 🔹 Convierte entidad a respuesta (Payment → PaymentResponse)
+   //Convierte entidad a respuesta (Payment → PaymentResponse)
     public static PaymentResponse toResponse(Payment payment) {
         if (payment == null)
             return null;
@@ -22,7 +22,7 @@ public class PaymentMapper {
                 .build();
     }
 
-    // 🔹 Convierte request a entidad (PaymentRequest → Payment)
+    //Convierte request a entidad (PaymentRequest → Payment)
     public static Payment toEntity(PaymentRequest dto, Appointment appointment) {
         if (dto == null)
             return null;
@@ -33,7 +33,7 @@ public class PaymentMapper {
                 .build();
     }
 
-    // 🔹 Copia datos de DTO a entidad existente (actualización)
+    //Copia datos de DTO a entidad existente (actualización)
     public static void copyToEntity(PaymentRequest dto, Payment entity, Appointment appointment) {
         if (dto == null || entity == null)
             return;

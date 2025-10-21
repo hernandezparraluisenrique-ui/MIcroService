@@ -64,7 +64,7 @@ public class StylistController {
     }
 
     @Operation(summary = "Create a new stylist")
-    @ApiResponse(responseCode = "201", description = "Registered stylist", content = {
+    @ApiResponse(responseCode = "200", description = "Registered stylist", content = {
             @Content(mediaType = "application/json", schema = @Schema(implementation = StylistResponse.class))
     })
     @PostMapping

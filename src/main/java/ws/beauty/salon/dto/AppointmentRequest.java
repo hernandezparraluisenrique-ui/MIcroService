@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import lombok.Data;
 @Data
-public class AppointmentRequestDTO {
+public class AppointmentRequest {
     private Integer id;
     private LocalDateTime appointmentDateTime;
     private String status;

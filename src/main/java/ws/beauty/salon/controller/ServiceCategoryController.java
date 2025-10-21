@@ -12,7 +12,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import ws.beauty.salon.dto.ServiceCategoryRequestDTO;
+import ws.beauty.salon.dto.ServiceCategoryRequest;
 import ws.beauty.salon.model.ServiceCategory;
 import ws.beauty.salon.service.ServiceCategoryService;
 
@@ -62,7 +62,7 @@ public class ServiceCategoryController {
 
     @Operation(summary = "Create a new category")
     @PostMapping
-    public ResponseEntity<ServiceCategoryRequestDTO> add(@RequestBody ServiceCategoryRequestDTO dto) {
+    public ResponseEntity<ServiceCategoryRequest> add(@RequestBody ServiceCategoryRequest dto) {
         ServiceCategory category = convertToEntity(dto);
         ServiceCategory saved = service.save(category);
         return new ResponseEntity<>(convertToDTO(saved), HttpStatus.CREATED);
@@ -75,11 +75,11 @@ public class ServiceCategoryController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    private ServiceCategoryRequestDTO convertToDTO(ServiceCategory category) {
-        return modelMapper.map(category, ServiceCategoryRequestDTO.class);
+    private ServiceCategoryRequest convertToDTO(ServiceCategory category) {
+        return modelMapper.map(category, ServiceCategoryRequest.class);
     }
 
-    private ServiceCategory convertToEntity(ServiceCategoryRequestDTO dto) {
+    private ServiceCategory convertToEntity(ServiceCategoryRequest dto) {
         return modelMapper.map(dto, ServiceCategory.class);
     }
 }

@@ -1,49 +1,52 @@
 package ws.beauty.salon.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 import java.time.LocalDateTime;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name = "clients")
 public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_client")
-    @JsonProperty("id_client")
-    private Integer id;
+    private Integer id; 
 
     @Column(name = "first_name", nullable = false, length = 50)
-    @JsonProperty("first_name")
     private String firstName;
 
     @Column(name = "last_name", nullable = false, length = 50)
-    @JsonProperty("last_name")
     private String lastName;
 
-    @Column(name = "email", unique = true, nullable = false, length = 100)
-    @JsonProperty("email")
+    @Column(name = "email", nullable = false, unique = true, length = 100)
     private String email;
 
     @Column(name = "phone", length = 20)
-    @JsonProperty("phone")
     private String phone;
 
-    @Column(name = "registration_date")
-    @JsonProperty("registration_date")
+    @Column(name = "registration_date", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime registrationDate;
 
-    @Column(name = "preferences")
-    @JsonProperty("preferences")
+    @Column(name = "preferences", columnDefinition = "TEXT")
     private String preferences;
 
-    @Column(name = "satisfaction_history")
-    @JsonProperty("satisfaction_history")
+    @Column(name = "satisfaction_history", columnDefinition = "TEXT")
     private String satisfactionHistory;
 }
 

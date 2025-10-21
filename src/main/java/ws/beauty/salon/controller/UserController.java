@@ -75,13 +75,6 @@ public class UserController {
         return userService.update(id, userRequest);
     }
 
-    @Operation(summary = "Delete a user")
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Integer id) {
-        userService.delete(id);
-    }
-
     // ------------------- CONSULTAS ESPECIALIZADAS -------------------
 
     @Operation(summary = "Get users by role")

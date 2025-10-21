@@ -2,9 +2,11 @@ package ws.beauty.salon.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Page;
+
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import ws.beauty.salon.dto.PaymentRequest;
@@ -76,14 +78,6 @@ public class PaymentServiceImpl implements PaymentService {
         return PaymentMapper.toResponse(saved);
     }
 
-    // 🔹 Eliminar un pago
-    @Override
-    public void delete(Integer idPayment) {
-        if (!paymentRepository.existsById(idPayment)) {
-            throw new EntityNotFoundException("Payment not found: " + idPayment);
-        }
-        paymentRepository.deleteById(idPayment);
-    }
 
     // 🔹 Buscar pago por ID de cita
     @Override

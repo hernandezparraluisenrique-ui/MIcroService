@@ -3,16 +3,13 @@ package ws.beauty.salon.controller;
 import java.net.URI;
 import java.time.LocalDateTime;
 import java.util.List;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 import io.swagger.v3.oas.annotations.Operation;
@@ -28,7 +25,7 @@ import ws.beauty.salon.service.PaymentService;
 
 
 @RestController
-@RequestMapping("/api/v3/payments")
+@RequestMapping("/payments")
 @RequiredArgsConstructor
 public class PaymentController {
 
@@ -78,14 +75,6 @@ private final PaymentService service;
     @Operation(summary = "Update existing payment")
     public PaymentResponse update(@PathVariable Integer idPayment, @Valid @RequestBody PaymentRequest req) {
         return service.update(idPayment, req);
-    }
-
-    // 🔹 Eliminar un pago
-    @DeleteMapping("/{idPayment}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @Operation(summary = "Delete payment by ID")
-    public void delete(@PathVariable Integer idPayment) {
-        service.delete(idPayment);
     }
 
     // 🔹 Buscar pago por ID de cita

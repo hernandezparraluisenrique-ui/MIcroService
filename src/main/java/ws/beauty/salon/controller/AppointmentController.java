@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import io.swagger.v3.oas.annotations.*;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import ws.beauty.salon.dto.AppointmentRequestDTO;
+import ws.beauty.salon.dto.AppointmentRequest;
 import ws.beauty.salon.model.Appointment;
 import ws.beauty.salon.service.AppointmentService;
 
@@ -67,15 +67,15 @@ public class AppointmentController {
 
     @Operation(summary = "Create a new appointment")
     @PostMapping
-    public ResponseEntity<AppointmentRequestDTO> add(@RequestBody AppointmentRequestDTO appointmentDTO) {
+    public ResponseEntity<AppointmentRequest> add(@RequestBody AppointmentRequest appointmentDTO) {
         Appointment saved = service.save(convertToEntity(appointmentDTO));
         return new ResponseEntity<>(convertToDTO(saved), HttpStatus.CREATED);
     }
 
     @Operation(summary = "Update an appointment")
     @PutMapping("{idAppointment}")
-    public ResponseEntity<AppointmentRequestDTO> update(@PathVariable Integer idAppointment,
-                                                        @RequestBody AppointmentRequestDTO appointmentDTO) {
+    public ResponseEntity<AppointmentRequest> update(@PathVariable Integer idAppointment,
+                                                        @RequestBody AppointmentRequest appointmentDTO) {
         Appointment existing = service.getById(idAppointment);
         if (existing == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
@@ -92,11 +92,11 @@ public class AppointmentController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    private AppointmentRequestDTO convertToDTO(Appointment appointment) {
-        return modelMapper.map(appointment, AppointmentRequestDTO.class);
+    private AppointmentRequest convertToDTO(Appointment appointment) {
+        return modelMapper.map(appointment, AppointmentRequest.class);
     }
 
-    private Appointment convertToEntity(AppointmentRequestDTO dto) {
+    private Appointment convertToEntity(AppointmentRequest dto) {
         return modelMapper.map(dto, Appointment.class);
     }
 }
